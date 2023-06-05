@@ -1,0 +1,5 @@
+export const LoginActionType = {
+  SIGN_UP_N_LOGIN: 'SIGN_UP_N_LOGIN',
+  CLEAR_REDUCER: 'CLEAR_REDUCER',
+  LOGIN_USER: 'LOGIN_USER'
+}

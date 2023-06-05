@@ -21,6 +21,18 @@ buildscript {
 
 allprojects {
     repositories {
+        exclusiveContent { 
+            filter { 
+                includeGroup "com.facebook.react" 
+            } 
+            forRepository { 
+                maven { 
+                    // NOTE: if you are in a monorepo, you may have "$rootDir/../../../node_modules/react-native/android" 
+                    url "$rootDir/../node_modules/react-native/android" 
+                } 
+            } 
+
+        } 
         mavenLocal()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm

@@ -78,7 +78,7 @@ import com.android.build.OutputFile
  */
 
 project.ext.react = [
-    enableHermes: false,  // clean and rebuild if changing
+    enableHermes: true,  // clean and rebuild if changing
 ]
 
 apply from: "../../node_modules/react-native/react.gradle"
@@ -152,11 +152,15 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
-        release {
-            storeFile file('my-upload-key.keystore')
-            storePassword "$System.env.MYAPP_UPLOAD_KEY_PASSWORD"
-            keyAlias "$System.env.MYAPP_UPLOAD_KEY_ALIAS"
-            keyPassword "$System.env.MYAPP_UPLOAD_KEY_PASSWORD"
+        release
+        {
+            if (project.hasProperty('MYAPP_RELEASE_STORE_FILE'))
+            {
+                storeFile file(MYAPP_RELEASE_STORE_FILE)
+                storePassword MYAPP_RELEASE_STORE_PASSWORD
+                keyAlias MYAPP_RELEASE_KEY_ALIAS
+                keyPassword MYAPP_RELEASE_KEY_PASSWORD
+            }
         }
     }
     buildTypes {

@@ -214,6 +214,8 @@ PODS:
   - React-jsinspector (0.64.4)
   - react-native-safe-area-context (3.4.1):
     - React-Core
+  - react-native-screen-lock-unlock-listener (1.0.1):
+    - React
   - react-native-splash-screen (3.3.0):
     - React-Core
   - React-perflogger (0.64.4)
@@ -349,6 +351,7 @@ DEPENDENCIES:
   - React-jsiexecutor (from `../node_modules/react-native/ReactCommon/jsiexecutor`)
   - React-jsinspector (from `../node_modules/react-native/ReactCommon/jsinspector`)
   - react-native-safe-area-context (from `../node_modules/react-native-safe-area-context`)
+  - react-native-screen-lock-unlock-listener (from `../node_modules/react-native-screen-lock-unlock-listener`)
   - react-native-splash-screen (from `../node_modules/react-native-splash-screen`)
   - React-perflogger (from `../node_modules/react-native/ReactCommon/reactperflogger`)
   - React-RCTActionSheet (from `../node_modules/react-native/Libraries/ActionSheetIOS`)
@@ -411,6 +414,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon/jsinspector"
   react-native-safe-area-context:
     :path: "../node_modules/react-native-safe-area-context"
+  react-native-screen-lock-unlock-listener:
+    :path: "../node_modules/react-native-screen-lock-unlock-listener"
   react-native-splash-screen:
     :path: "../node_modules/react-native-splash-screen"
   React-perflogger:
@@ -473,6 +478,7 @@ SPEC CHECKSUMS:
   React-jsiexecutor: 8c077bef1c64430b6034f27df1000d194551e2eb
   React-jsinspector: d4f6973dd474357dbaaf6f52f31ffc713bf3e766
   react-native-safe-area-context: 9e40fb181dac02619414ba1294d6c2a807056ab9
+  react-native-screen-lock-unlock-listener: 3027205625d6f4559b18d930c86443ce45ef22cd
   react-native-splash-screen: 4312f786b13a81b5169ef346d76d33bc0c6dc457
   React-perflogger: 5a890ca0911669421b7611661e9b58f91c805f5c
   React-RCTActionSheet: bd180e0879f8424a73650c5c28fbef4f3b5b27fb

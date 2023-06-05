@@ -4,5 +4,6 @@
 @interface RNLockDetection : RCTEventEmitter <RCTBridgeModule>
 
 - (void)lockStatusChanged:(NSString *)newStatus;
+- (void)startBackgroundTask;
 
 @end

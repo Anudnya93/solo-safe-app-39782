@@ -7303,6 +7303,11 @@ react-native-safe-area-context@^3.2.0:
   resolved "https://registry.yarnpkg.com/react-native-safe-area-context/-/react-native-safe-area-context-3.4.1.tgz#c967a52903d55fe010b2428e5368b42f1debc0a7"
   integrity sha512-xfpVd0CiZR7oBhuwJ2HcZMehg5bjha1Ohu1XHpcT+9ykula0TgovH2BNU0R5Krzf/jBR1LMjR6VabxdlUjqxcA==
 
+react-native-screen-lock-unlock-listener@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/react-native-screen-lock-unlock-listener/-/react-native-screen-lock-unlock-listener-1.0.1.tgz#d8a5909a81fae8552d327a6b4afcc1414f0a7ad1"
+  integrity sha512-Mh8kpn4zNfm+yIHAJKxxTVVzDaZPdYFlsum3RLlkGZoXRUH7fjxnSaXOuiCbSbRqYWhICQUxeRSrSznCvBX+zw==
+
 react-native-screens@^2.18.1:
   version "2.18.1"
   resolved "https://registry.yarnpkg.com/react-native-screens/-/react-native-screens-2.18.1.tgz#47b9991c6f762d00d0ed3233e5283d523e859885"

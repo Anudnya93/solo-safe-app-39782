@@ -4,27 +4,40 @@ import {
   Text,
   View,
   NativeEventEmitter,
-  NativeModules
+  NativeModules,
+  AppState,
+  Platform
 } from 'react-native'
 import Icon from '../../components/Icon'
 
-let lockDetectionSuscription
+let LockDetectionEmitter
+let andListener
+
+if (Platform.OS === 'ios') {
+  const { LockDetection } = NativeModules
+  LockDetection.registerforDeviceLockNotif()
+  LockDetectionEmitter = new NativeEventEmitter(LockDetection)
+} else if (Platform.OS === 'android') {
+  LockDetectionEmitter = new NativeEventEmitter(NativeModules.PhoneLocked)
+}
 
 const Home = () => {
-  const { LockDetection } = NativeModules
-
-  console.log('rndetection', LockDetection)
+  const handleLockStatusChange = newStatus => {
+    console.log('newstat', newStatus)
+  }
 
   useEffect(() => {
-    LockDetection.registerforDeviceLockNotif() // Register the library to listen the events for Darwin notifications
-    const LockDetectionEmitter = new NativeEventEmitter(LockDetection) // Create instance of EventEmitter
-    lockDetectionSuscription = LockDetectionEmitter.addListener(
-      // and add the listener
-      'LockStatusChange',
-      newStatus => {
-        console.log('new status', newStatus) // Do whatever you need with the information
-      }
-    )
+    if (Platform.OS === 'ios') {
+      LockDetectionEmitter.addListener(
+        'LockStatusChange',
+        handleLockStatusChange
+      )
+    } else if (Platform.OS === 'android') {
+      LockDetectionEmitter.addListener('EventReminder', res => {
+        // listen here for screen on or off action
+        console.log(res.action) // ACTION_USER_PRESENT || ACTION_SCREEN_OFF || ACTION_SCREEN_ON
+      })
+    }
 
     // android another implementation better working
 
@@ -37,26 +50,16 @@ const Home = () => {
 
     // android implementation 2 end
 
-    // android implementation working
-
-    // const RNLockDetection = NativeModules.RNLockDetection
-    // console.log('RNLockDetection', RNLockDetection)
-
-    // interval = setInterval(() => {
-    //   RNLockDetection.isLock().then(callback => {
-    //     //calback = true is mode sleep
-    //     if (callback) {
-    //       console.log('Mode Sleep')
-    //     } else {
-    //       console.log('Active screen')
-    //     }
-    //   })
-    // }, 1000)
-
-    // android implementation end
     return () => {
+      if (Platform.OS === 'ios') {
+        LockDetectionEmitter.removeListener(
+          'LockStatusChange',
+          handleLockStatusChange
+        )
+      } else if (Platform.OS === 'android') {
+      }
       // clearInterval(interval)
-      lockDetectionSuscription.remove()
+      // lockDetectionSuscription.remove()
     }
   }, [])
   return (

@@ -1,8 +1,10 @@
 
 #import "RNLockDetection.h"
 #import <React/RCTLog.h>
+#import <UIKit/UIKit.h> 
 
 RNLockDetection * refToSelf;
+UIBackgroundTaskIdentifier backgroundTask;
 
 //call back
 static void displayStatusChanged(CFNotificationCenterRef center, void *observer, CFStringRef name, const void *object, CFDictionaryRef userInfo)
@@ -54,12 +56,21 @@ RCT_EXPORT_MODULE(LockDetection);
   [self sendEventWithName:@"LockStatusChange" body:@{@"newStatus": newLockedStatus}];
 }
 
+- (void)startBackgroundTask	
+{	
+    backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"LockDetectionBackgroundTask" expirationHandler:^{	
+        [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];	
+        backgroundTask = UIBackgroundTaskInvalid;	
+    }];	
+}
+
 RCT_EXPORT_METHOD(registerforDeviceLockNotif) {
     RCTLogInfo(@"Registering for lock events");
     //Screen lock notifications
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, displayStatusChanged, CFSTR("com.apple.springboard.lockcomplete"), NULL,CFNotificationSuspensionBehaviorDeliverImmediately);
 
     CFNotificationCenterAddObserver(CFNotificationCenterGetDarwinNotifyCenter(), NULL, displayStatusChanged, CFSTR("com.apple.springboard.lockstate"), NULL, CFNotificationSuspensionBehaviorDeliverImmediately);
+    [self startBackgroundTask];
 }
 
 @end

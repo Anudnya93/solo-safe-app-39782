@@ -11,7 +11,6 @@ import {
 import Icon from '../../components/Icon'
 
 let LockDetectionEmitter
-let andListener
 
 if (Platform.OS === 'ios') {
   const { LockDetection } = NativeModules

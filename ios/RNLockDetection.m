@@ -59,9 +59,16 @@ RCT_EXPORT_MODULE(LockDetection);
 - (void)startBackgroundTask	
 {	
     backgroundTask = [[UIApplication sharedApplication] beginBackgroundTaskWithName:@"LockDetectionBackgroundTask" expirationHandler:^{	
-        [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];	
-        backgroundTask = UIBackgroundTaskInvalid;	
+        [self endBackgroundTask];
     }];	
+}
+
+- (void)endBackgroundTask {
+  if (backgroundTask != UIBackgroundTaskInvalid) {
+    [[UIApplication sharedApplication] endBackgroundTask:backgroundTask];
+    backgroundTask = UIBackgroundTaskInvalid;
+    [self startBackgroundTask]; // Start a new background task to continue running in the background
+  }
 }
 
 RCT_EXPORT_METHOD(registerforDeviceLockNotif) {

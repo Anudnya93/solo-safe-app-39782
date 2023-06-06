@@ -59,4 +59,13 @@ static void InitializeFlipper(UIApplication *application) {
 #endif
 }
 
+- (void)applicationDidEnterBackground:(UIApplication *)application {
+  NSLog(@"App entered background");
+}
+
+- (void)applicationWillTerminate:(UIApplication *)application {
+  NSLog(@"App will terminate");
+}
+
+
 @end

@@ -37,7 +37,7 @@ export const AppNavigation = () => {
         cardStyleInterpolator: CardStyleInterpolators.forHorizontalIOS
       }}
     >
-      {isLoggedIn ? renderAuthStack() : renderCommonStack()}
+      {!isLoggedIn ? renderAuthStack() : renderCommonStack()}
     </Stack.Navigator>
   )
 }

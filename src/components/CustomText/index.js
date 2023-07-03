@@ -1,10 +1,13 @@
 import React from 'react'
 import { StyleSheet, Text } from 'react-native'
 import fonts from '../../assets/fonts'
+import { useColors } from '../../theme/colors'
 
 const CustomText = ({ style, ...props }) => {
+  const colors = useColors()
+  const scheme = styles(colors)
   return (
-    <Text style={[styles.text, style]} {...props}>
+    <Text allowFontScaling={false} style={[scheme.text, style]} {...props}>
       {props.children}
     </Text>
   )
@@ -12,8 +15,10 @@ const CustomText = ({ style, ...props }) => {
 
 export default CustomText
 
-const styles = StyleSheet.create({
-  text: {
-    fontFamily: fonts.OpenSans
-  }
-})
+const styles = colors =>
+  StyleSheet.create({
+    text: {
+      fontFamily: fonts.OpenSans,
+      color: colors.text
+    }
+  })

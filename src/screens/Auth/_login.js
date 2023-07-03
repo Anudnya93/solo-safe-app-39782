@@ -9,7 +9,7 @@ const Login = () => {
   const scheme = styles(colors)
   return (
     <BaseScreen>
-      <CustomText>hello</CustomText>
+      <CustomText>new</CustomText>
     </BaseScreen>
   )
 }

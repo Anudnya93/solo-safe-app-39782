@@ -1,0 +1,11 @@
+{
+    "plugins": [
+      ["module-resolver", {
+        "alias": {
+          "@app": "./src"
+          // Add more aliases if needed
+        }
+      }]
+    ]
+  }
+  

@@ -4,8 +4,7 @@ import { verticalScale, horizontalScale } from '../../helpers/basicStyles'
 export default StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: Platform.OS === 'android' ? 0 : verticalScale(40),
-    paddingHorizontal: horizontalScale(20)
+    paddingTop: Platform.OS === 'android' ? 0 : verticalScale(40)
   },
   KeyboardAvoidingView: {
     flex: 1

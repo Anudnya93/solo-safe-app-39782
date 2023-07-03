@@ -13,12 +13,13 @@ const BaseScreen = ({
   header,
   leftIcon,
   containerStyle,
+  parentStyle,
   style,
   ...rest
 }) => {
   const colors = useColors()
   return (
-    <View style={styles.container}>
+    <View style={[styles.container, parentStyle]}>
       {header && (
         <Header
           leftHandler={onIconPress ?? null}

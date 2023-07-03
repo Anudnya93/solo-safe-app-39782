@@ -1,4 +1,8 @@
 import { Dimensions, PixelRatio, Platform } from 'react-native'
+import {
+  heightPercentageToDP as hp,
+  widthPercentageToDP as wp
+} from 'react-native-responsive-screen'
 
 const { width: SCREEN_WIDTH, height: SCREEN_HEIGHT } = Dimensions.get('window')
 
@@ -37,3 +41,5 @@ export function normalFontScale(size) {
   const newSize = hScale * size
   return Math.round(PixelRatio.roundToNearestPixel(newSize)) - 2
 }
+
+export { wp, hp }

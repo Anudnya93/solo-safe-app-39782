@@ -16,6 +16,7 @@ import { ScrollView } from 'react-native-gesture-handler'
 import { validateEmail } from '../../constants/regex'
 import SocialSignIn from '../../components/SocialSignIn'
 import { Strings } from '../../constants/Strings'
+import { storage } from '../../helpers/mmkv'
 
 const Login = () => {
   const colors = useColors()
@@ -38,7 +39,16 @@ const Login = () => {
   //   }
   // }, [isLoading])
 
-  useEffect(() => {}, [])
+  useEffect(() => {
+    const creds = storage.getString('creds')
+    console.log('creds', creds)
+    if (creds) {
+      console.log('creds', creds)
+      const obj = JSON.parse(creds)
+      setEmail(obj.email)
+      setPassword(obj.password)
+    }
+  }, [])
 
   const handleLogin = () => {
     // setLoading(p => !p)
@@ -48,6 +58,9 @@ const Login = () => {
       password: password
     }
     if (rememberMe) {
+      storage.set('creds', JSON.stringify({ email, password }))
+    } else {
+      storage.delete('creds')
     }
     // dispatch(LoginActions.login(payload))
   }

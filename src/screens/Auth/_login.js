@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { ImageBackground, StyleSheet, View } from 'react-native'
 import { useColors } from '../../theme/colors'
 import CustomText from '../../components/CustomText'
@@ -28,7 +28,7 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [userType, setUserType] = useState(1)
-  const [rememberMe, setRememberMe] = useState(false)
+  const [rememberMe, setRememberMe] = useState(true)
   const [emailError, setEmailError] = useState(false)
 
   // useEffect(() => {
@@ -38,12 +38,16 @@ const Login = () => {
   //   }
   // }, [isLoading])
 
+  useEffect(() => {}, [])
+
   const handleLogin = () => {
     // setLoading(p => !p)
+    console.log('handlelogincalled')
     const payload = {
       username: email,
-      password: password,
-      user_type: userType.toString()
+      password: password
+    }
+    if (rememberMe) {
     }
     // dispatch(LoginActions.login(payload))
   }

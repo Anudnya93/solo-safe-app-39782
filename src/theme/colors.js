@@ -10,7 +10,11 @@ const dark = {
 }
 
 const common = {
-  button: 'yellow'
+  blueBorder: '#399CC5',
+  gray: '#666666',
+  red: '#EA4335',
+  background: '#F6F6F6',
+  purple: '#840078'
 }
 const useColors = () => {
   const theme = useColorScheme()

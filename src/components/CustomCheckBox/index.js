@@ -10,7 +10,7 @@ const CustomCheckBox = ({ style, checked, onPress }) => {
     <View style={style}>
       <TouchableOpacity activeOpacity={0.9} onPress={onPress}>
         {checked ? (
-          <Icon name="checked" family="custom" size={20} />
+          <Icon name="checked" family="custom" size={16} />
         ) : (
           <View style={scheme.sqaure} />
         )}
@@ -24,8 +24,8 @@ export default CustomCheckBox
 const styles = colors =>
   StyleSheet.create({
     sqaure: {
-      height: 20,
-      width: 20,
+      height: 16,
+      width: 16,
       borderRadius: 2,
       borderWidth: 1,
       borderColor: colors.icongray

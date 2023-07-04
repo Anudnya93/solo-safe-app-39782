@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { StyleSheet } from 'react-native'
+import { ImageBackground, StyleSheet, View } from 'react-native'
 import { useColors } from '../../theme/colors'
 import CustomText from '../../components/CustomText'
 import BaseScreen from '../../components/BaseScreen'
@@ -8,8 +8,14 @@ import Icon from '../../components/Icon'
 import { hp, wp } from '../../helpers/basicStyles'
 import CustomInput from '../../components/CustomInput'
 import CustomButton from '../../components/CustomButton'
+import CustomCheckBox from '../../components/CustomCheckBox'
 import { useDispatch, useSelector } from 'react-redux'
 import { useNavigation } from '@react-navigation/native'
+import Separator from '../../components/Separator'
+import { ScrollView } from 'react-native-gesture-handler'
+import { validateEmail } from '../../constants/regex'
+import SocialSignIn from '../../components/SocialSignIn'
+import { Strings } from '../../constants/Strings'
 
 const Login = () => {
   const colors = useColors()
@@ -22,6 +28,8 @@ const Login = () => {
   const [password, setPassword] = useState('')
   const [loading, setLoading] = useState(false)
   const [userType, setUserType] = useState(1)
+  const [rememberMe, setRememberMe] = useState(false)
+  const [emailError, setEmailError] = useState(false)
 
   // useEffect(() => {
   //   GetFCMToken(() => {})
@@ -31,7 +39,7 @@ const Login = () => {
   // }, [isLoading])
 
   const handleLogin = () => {
-    setLoading(true)
+    // setLoading(p => !p)
     const payload = {
       username: email,
       password: password,
@@ -45,55 +53,93 @@ const Login = () => {
   }
 
   const handleDisable = () => {
-    return !(email && password)
+    return !(email && !emailError && password)
+  }
+  const handlemailChange = val => {
+    setEmail(val)
+    if (val) {
+      setEmailError(!validateEmail(val))
+    } else {
+      setEmailError(false)
+    }
   }
   return (
-    <BaseScreen>
-      <Icon family="custom" name="logo" size={hp(20)} width={wp(80)} />
-      <CustomInput
-        label={'Email Address'}
-        value={email}
-        setter={setEmail}
-        icon={'email'}
-        placeholder="Enter your email address"
-        keyboardType="email-address"
-        maxLength={250}
-      />
-      <CustomInput
-        label={'Password'}
-        value={password}
-        setter={setPassword}
-        icon={'password'}
-        placeholder="Enter your password"
-        maxLength={250}
-        style={{ marginTop: 20 }}
-        secureTextEntry
-      />
-      <Icon family="custom" name="forgot" size={20} />
-      <CustomText
-        onPress={handleForgotPassword}
-        style={{
-          fontFamily: fonts.OpenSansMedium,
-          color: colors.button,
-          marginVertical: 23,
-          alignSelf: 'flex-end'
-        }}
-      >
-        {'Forgot Password'}
-      </CustomText>
-      {/* </View> */}
-      {/* <SocialSignIn callBackHandler={handleSocialSignIn} /> */}
-      <CustomButton
-        disabled={handleDisable()}
-        onPress={handleLogin}
-        label="Sign in"
-        style={{
-          position: 'absolute',
-          bottom: hp(10)
-        }}
-        loader={loading}
-      />
-    </BaseScreen>
+    <View style={{ justifyContent: 'space-between', flex: 1 }}>
+      <View>
+        <CustomInput
+          value={email}
+          setter={handlemailChange}
+          icon={'email'}
+          placeholder="Enter your email"
+          keyboardType="email-address"
+          maxLength={250}
+          style={{ marginBottom: 20 }}
+          error={emailError ? Strings.EmailError : null}
+        />
+        <CustomInput
+          value={password}
+          setter={setPassword}
+          icon={'password'}
+          placeholder="Enter your password"
+          maxLength={250}
+          secureTextEntry
+        />
+        <View
+          style={{
+            flexDirection: 'row',
+            alignItems: 'center',
+            marginTop: 16,
+            justifyContent: 'space-between'
+          }}
+        >
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}
+          >
+            <Icon family="custom" name="forgot" size={14} />
+            <CustomText
+              onPress={handleForgotPassword}
+              style={{
+                fontSize: 12,
+                marginLeft: 8
+              }}
+            >
+              {'I forgot my password'}
+            </CustomText>
+          </View>
+          <View
+            style={{
+              flexDirection: 'row',
+              alignItems: 'center'
+            }}
+          >
+            <CustomCheckBox
+              checked={rememberMe}
+              onPress={() => setRememberMe(p => !p)}
+            />
+            <CustomText
+              style={{
+                fontSize: 12,
+                marginLeft: 8
+              }}
+            >
+              {'Remember me'}
+            </CustomText>
+          </View>
+        </View>
+      </View>
+      <View style={{ marginBottom: 25 }}>
+        <CustomButton
+          disabled={handleDisable()}
+          onPress={handleLogin}
+          label="Sign in"
+          loader={loading}
+        />
+        <SocialSignIn />
+      </View>
+    </View>
   )
 }
 

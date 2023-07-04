@@ -9,6 +9,7 @@ import unseen from './unseen.svg'
 import email from './email.svg'
 import forgot from './forgot.svg'
 import checked from './checked.svg'
+import user from './user.svg'
 
 export const Icons = {
   time,
@@ -21,5 +22,6 @@ export const Icons = {
   email,
   forgot,
   password,
-  checked
+  checked,
+  user
 }

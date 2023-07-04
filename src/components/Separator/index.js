@@ -25,6 +25,11 @@ const styles = colors =>
       alignSelf: 'center',
       marginVertical: 10
     },
-    line: { height: 1, width: '33%', backgroundColor: colors.gray },
-    text: { marginHorizontal: 10, textAlign: 'center', color: colors.text }
+    line: { height: 1, width: '45%', backgroundColor: colors.gray },
+    text: {
+      marginHorizontal: 10,
+      textAlign: 'center',
+      color: colors.text,
+      fontSize: 12
+    }
   })

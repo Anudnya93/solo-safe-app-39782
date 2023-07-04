@@ -8,6 +8,7 @@ import {
 import CustomText from '../CustomText'
 import fonts from '../../assets/fonts'
 import { useColors } from '../../theme/colors'
+import LinearGradient from 'react-native-linear-gradient'
 
 const CustomButton = ({
   textStyle,
@@ -24,17 +25,19 @@ const CustomButton = ({
       disabled={disabled || loader}
       activeOpacity={0.7}
       onPress={onPress}
-      style={[
-        scheme.button,
-        style,
-        disabled && { backgroundColor: colors.gray }
-      ]}
     >
-      {loader ? (
-        <ActivityIndicator color={'white'} size={24.5} />
-      ) : (
-        <CustomText style={[scheme.text, textStyle]}>{label}</CustomText>
-      )}
+      <LinearGradient
+        start={{ x: 0, y: 0 }}
+        end={{ x: 1, y: 1 }}
+        colors={['#D90CA0', '#86007B']}
+        style={[scheme.button, style]}
+      >
+        {loader ? (
+          <ActivityIndicator color={'white'} size={20} />
+        ) : (
+          <CustomText style={[scheme.text, textStyle]}>{label}</CustomText>
+        )}
+      </LinearGradient>
     </TouchableOpacity>
   )
 }
@@ -44,15 +47,15 @@ export default CustomButton
 const styles = colors =>
   StyleSheet.create({
     button: {
-      width: '100%',
-      backgroundColor: colors.button,
-      padding: 15,
+      justifyContent: 'center',
       alignItems: 'center',
-      borderRadius: 10
+      width: '100%',
+      padding: 10,
+      borderRadius: 100
     },
     text: {
       color: 'white',
       fontSize: 16,
-      fontFamily: fonts.OpenSansMedium
+      fontFamily: fonts.OpenSansSemiBold
     }
   })

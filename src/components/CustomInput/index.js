@@ -70,12 +70,7 @@ const CustomInput = ({
               setSecure(p => !p)
             }}
           >
-            <Icon
-              name={secure ? 'eye' : 'eye-off'}
-              family="feather"
-              size={20}
-              color={colors.icongray}
-            />
+            <Icon name={secure ? 'unseen' : 'seen'} family="custom" size={20} />
           </TouchableOpacity>
         )}
         {date && (
@@ -122,10 +117,9 @@ const styles = colors =>
     container: {
       flexDirection: 'row',
       alignItems: 'center',
-      paddingHorizontal: 20,
-      borderWidth: 1,
-      borderColor: colors.lightgray,
-      borderRadius: 10,
+      paddingHorizontal: 5,
+      borderBottomWidth: 1,
+      borderBottomColor: colors.blueBorder,
       justifyContent: 'space-between',
       ...Platform.select({
         ios: {

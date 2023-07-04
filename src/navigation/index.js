@@ -6,6 +6,7 @@ import * as React from 'react'
 import { StyleSheet } from 'react-native'
 import { useSelector } from 'react-redux'
 import { Login, Home } from '../screens'
+import Landing from '../screens/Auth/_landing'
 
 const Stack = createStackNavigator()
 
@@ -18,7 +19,7 @@ export const AppNavigation = () => {
   const renderAuthStack = () => {
     return (
       <>
-        <Stack.Screen name="login" component={Login} />
+        <Stack.Screen name="landing" component={Landing} />
       </>
     )
   }

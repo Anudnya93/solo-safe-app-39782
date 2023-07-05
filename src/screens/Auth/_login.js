@@ -40,14 +40,14 @@ const Login = () => {
   // }, [isLoading])
 
   useEffect(() => {
-    const creds = storage.getString('creds')
-    console.log('creds', creds)
-    if (creds) {
-      console.log('creds', creds)
-      const obj = JSON.parse(creds)
-      setEmail(obj.email)
-      setPassword(obj.password)
-    }
+    // const creds = storage.getString('creds')
+    // console.log('creds', creds)
+    // if (creds) {
+    //   console.log('creds', creds)
+    //   const obj = JSON.parse(creds)
+    //   setEmail(obj.email)
+    //   setPassword(obj.password)
+    // }
   }, [])
 
   const handleLogin = () => {
@@ -57,11 +57,11 @@ const Login = () => {
       username: email,
       password: password
     }
-    if (rememberMe) {
-      storage.set('creds', JSON.stringify({ email, password }))
-    } else {
-      storage.delete('creds')
-    }
+    // if (rememberMe) {
+    //   storage.set('creds', JSON.stringify({ email, password }))
+    // } else {
+    //   storage.delete('creds')
+    // }
     // dispatch(LoginActions.login(payload))
   }
 

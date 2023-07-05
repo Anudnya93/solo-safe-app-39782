@@ -1,22 +1,121 @@
-import React from 'react'
-import { StyleSheet, TouchableOpacity, View } from 'react-native'
+import React, { useEffect } from 'react'
+import { Platform, StyleSheet, TouchableOpacity, View } from 'react-native'
 import Separator from '../Separator'
 import Icon from '../Icon'
 import CustomText from '../CustomText'
 import { useColors } from '../../theme/colors'
+import {
+  GoogleSignin,
+  statusCodes
+} from '@react-native-google-signin/google-signin'
+import appleAuth from '@invertase/react-native-apple-authentication'
 
 const SocialSignIn = ({ title, callBackHandler = () => {} }) => {
   const colors = useColors()
   const scheme = styles(colors)
-  const handleFBLogin = () => {
-    callBackHandler()
+  // const handleFBLogin = async() => {
+  //   try {
+  //     await _fblogin()
+  //   } catch (err) {
+  //     console.log('err in catch', err)
+  //   }
+  // }
+  const handleGoogleLogin = async () => {
+    try {
+      await GoogleSignin.hasPlayServices()
+      const userinfo = await GoogleSignin.signIn()
+      console.log({ userinfo })
+    } catch (error) {
+      if (error.code === statusCodes.SIGN_IN_CANCELLED) {
+        // user cancelled the login flow
+        alert('Cancel')
+      } else if (error.code === statusCodes.IN_PROGRESS) {
+        alert('Signin in progress')
+        // operation (f.e. sign in) is in progress already
+      } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
+        alert('PLAY_SERVICES_NOT_AVAILABLE')
+        // play services not available or outdated
+      } else {
+        // some other error happened
+        console.log({ error })
+      }
+    }
   }
-  const handleGoogleLogin = () => {
-    callBackHandler()
+
+  const handleAppleLogin = async () => {
+    try {
+      const appleAuthRequestResponse = await appleAuth.performRequest({
+        requestedOperation: appleAuth.Operation.LOGIN,
+        requestedScopes: [appleAuth.Scope.EMAIL, appleAuth.Scope.FULL_NAME]
+      })
+      if (!appleAuthRequestResponse.identityToken) {
+        throw new Error('Apple Sign-In failed - no identify token returned')
+      }
+
+      const { identityToken, nonce } = appleAuthRequestResponse
+      console.log({ appleAuthRequestResponse })
+    } catch (err) {
+      console.log({ err })
+    }
   }
-  const handleAppleLogin = () => {
-    callBackHandler()
-  }
+
+  // const _fblogin = () => {
+  //   // LoginManager.logOut()
+  //   return LoginManager.logInWithPermissions(['email', 'public_profile']).then(
+  //     res => {
+  //       console.log('res of fb login', res)
+  //       if (
+  //         res.declinedPermissions &&
+  //         res.declinedPermissions.includes('email')
+  //       ) {
+  //         Alert.alert('Email is required')
+  //       }
+  //       if (res.isCancelled) {
+  //         console.error('err')
+  //       } else {
+  //         const req = new GraphRequest(
+  //           '/me?fields=email,name,picture',
+  //           null,
+  //           (err, result) => {
+  //             if (err) {
+  //               console.error('err', err)
+  //               return
+  //             } else {
+  //               console.log('res of login fb', result)
+  //               AccessToken.getCurrentAccessToken().then(data => {
+  //                 console.log(data.accessToken.toString())
+  //                 const fbCreds = auth.FacebookAuthProvider.credential(
+  //                   data.accessToken
+  //                 )
+  //                 auth()
+  //                   .signInWithCredential(fbCreds)
+  //                   .then(resp => {
+  //                     const _dataset = {
+  //                       user_uid: resp.user.uid
+  //                     }
+  //                     return _dataset
+  //                   })
+  //               })
+  //             }
+  //           }
+  //         )
+  //         new GraphRequestManager().addRequest(req).start()
+  //       }
+  //     },
+  //     err => {
+  //       console.error('error in login', err)
+  //     }
+  //   )
+  // }
+
+  useEffect(() => {
+    GoogleSignin.configure({
+      scopes: ['email', 'profile'],
+      webClientId:
+        '146542251310-te1enqeplvk5jkmndlpto6c7g0lan5kb.apps.googleusercontent.com',
+      offlineAccess: true
+    })
+  }, [])
   return (
     <>
       <Separator title={'Or'} />
@@ -35,11 +134,19 @@ const SocialSignIn = ({ title, callBackHandler = () => {} }) => {
           justifyContent: 'space-between'
         }}
       >
-        <TouchableOpacity style={scheme.button} onPress={handleAppleLogin}>
-          <Icon size={24} name="apple" family="custom" />
-          <CustomText style={{ marginLeft: 8 }}>via Apple</CustomText>
-        </TouchableOpacity>
-        <TouchableOpacity style={scheme.button} onPress={handleFBLogin}>
+        {Platform.OS === 'ios' && (
+          <TouchableOpacity
+            style={[scheme.button, { marginRight: 8 }]}
+            onPress={handleAppleLogin}
+          >
+            <Icon size={24} name="apple" family="custom" />
+            <CustomText style={{ marginLeft: 8 }}>via Apple</CustomText>
+          </TouchableOpacity>
+        )}
+        <TouchableOpacity
+          style={scheme.button}
+          //  onPress={handleFBLogin}
+        >
           <Icon size={24} name="facebook" family="custom" />
           <CustomText style={{ marginLeft: 8 }}>via Facebook</CustomText>
         </TouchableOpacity>
@@ -59,7 +166,7 @@ const styles = colors =>
       marginVertical: 20
     },
     button: {
-      width: '49%',
+      flex: 1,
       borderRadius: 100,
       padding: 10,
       borderWidth: 1,

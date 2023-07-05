@@ -7,6 +7,7 @@ buildscript {
         compileSdkVersion = 31
         targetSdkVersion = 31
         ndkVersion = "20.1.5948944"
+        googlePlayServicesAuthVersion = "19.2.0" 
     }
     repositories {
         google()
@@ -14,6 +15,8 @@ buildscript {
     }
     dependencies {
         classpath("com.android.tools.build:gradle:4.1.0")
+        classpath 'com.google.gms:google-services:4.3.15'// <--- use this version or newer
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:1.6.10" // <- for resolving the apple sign in lib issue in android
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
     }
@@ -34,6 +37,7 @@ allprojects {
 
         } 
         mavenLocal()
+        google()
         maven {
             // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
             url("$rootDir/../node_modules/react-native/android")
@@ -43,7 +47,6 @@ allprojects {
             url("$rootDir/../node_modules/jsc-android/dist")
         }
 
-        google()
         jcenter()
         maven { url 'https://www.jitpack.io' }
     }

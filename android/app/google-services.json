@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "146542251310",
+    "project_id": "solodemo-f4a57",
+    "storage_bucket": "solodemo-f4a57.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:146542251310:android:dda998c5b857a31e2f7ebf",
+        "android_client_info": {
+          "package_name": "com.black_tooth_39782"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "146542251310-nj5redia1bq0ihp158tvmtnif8labu9d.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDeLGUMAjIr6-edo6IUHK7RoZgmes2IUGg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "146542251310-nj5redia1bq0ihp158tvmtnif8labu9d.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

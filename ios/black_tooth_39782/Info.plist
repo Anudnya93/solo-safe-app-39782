@@ -27,9 +27,23 @@
 			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
+				<string>fb827609012301155</string>
 				<string>com.googleusercontent.apps.146542251310-8445po8qk1gntos2higc5f9gbatobpu5</string>
 			</array>
 		</dict>
+	</array>
+	<key>FacebookAppID</key>
+	<string>827609012301155</string>
+	<key>FacebookClientToken</key>
+	<string>9fcd9a529b502b5f3cb66894abd3b2ae</string>
+	<key>FacebookDisplayName</key>
+	<string>Solo</string>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+	<string>fbapi</string>
+	<string>fb-messenger-share-api</string>
+	<string>fbauth2</string>
+	<string>fbshareextension</string>
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
@@ -94,6 +108,8 @@
 		<string>UIInterfaceOrientationLandscapeRight</string>
 		<string>UIInterfaceOrientationPortrait</string>
 	</array>
+	<key>UIUserInterfaceStyle</key>
+    <string>Light</string>
 	<key>UIViewControllerBasedStatusBarAppearance</key>
 	<false/>
 </dict>

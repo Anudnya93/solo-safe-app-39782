@@ -38,6 +38,7 @@
     "react-native-dotenv": "^2.5.3",
     "react-native-elements": "^3.3.1",
     "react-native-fast-image": "^8.6.3",
+    "react-native-fbsdk-next": "^11.2.1",
     "react-native-gesture-handler": "2.9.0",
     "react-native-linear-gradient": "^2.7.3",
     "react-native-radio-buttons-group": "^2.2.11",

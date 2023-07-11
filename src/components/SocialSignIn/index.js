@@ -9,17 +9,23 @@ import {
   statusCodes
 } from '@react-native-google-signin/google-signin'
 import appleAuth from '@invertase/react-native-apple-authentication'
+import {
+  AccessToken,
+  GraphRequest,
+  GraphRequestManager,
+  LoginManager
+} from 'react-native-fbsdk-next'
 
 const SocialSignIn = ({ title, callBackHandler = () => {} }) => {
   const colors = useColors()
   const scheme = styles(colors)
-  // const handleFBLogin = async() => {
-  //   try {
-  //     await _fblogin()
-  //   } catch (err) {
-  //     console.log('err in catch', err)
-  //   }
-  // }
+  const handleFBLogin = async () => {
+    try {
+      await _fblogin()
+    } catch (err) {
+      console.log('err in catch', err)
+    }
+  }
   const handleGoogleLogin = async () => {
     try {
       await GoogleSignin.hasPlayServices()
@@ -59,54 +65,52 @@ const SocialSignIn = ({ title, callBackHandler = () => {} }) => {
     }
   }
 
-  // const _fblogin = () => {
-  //   // LoginManager.logOut()
-  //   return LoginManager.logInWithPermissions(['email', 'public_profile']).then(
-  //     res => {
-  //       console.log('res of fb login', res)
-  //       if (
-  //         res.declinedPermissions &&
-  //         res.declinedPermissions.includes('email')
-  //       ) {
-  //         Alert.alert('Email is required')
-  //       }
-  //       if (res.isCancelled) {
-  //         console.error('err')
-  //       } else {
-  //         const req = new GraphRequest(
-  //           '/me?fields=email,name,picture',
-  //           null,
-  //           (err, result) => {
-  //             if (err) {
-  //               console.error('err', err)
-  //               return
-  //             } else {
-  //               console.log('res of login fb', result)
-  //               AccessToken.getCurrentAccessToken().then(data => {
-  //                 console.log(data.accessToken.toString())
-  //                 const fbCreds = auth.FacebookAuthProvider.credential(
-  //                   data.accessToken
-  //                 )
-  //                 auth()
-  //                   .signInWithCredential(fbCreds)
-  //                   .then(resp => {
-  //                     const _dataset = {
-  //                       user_uid: resp.user.uid
-  //                     }
-  //                     return _dataset
-  //                   })
-  //               })
-  //             }
-  //           }
-  //         )
-  //         new GraphRequestManager().addRequest(req).start()
-  //       }
-  //     },
-  //     err => {
-  //       console.error('error in login', err)
-  //     }
-  //   )
-  // }
+  const _fblogin = () => {
+    LoginManager.logOut()
+    return LoginManager.logInWithPermissions(['email', 'public_profile']).then(
+      res => {
+        console.log('res of fb login', res)
+        if (
+          res.declinedPermissions &&
+          res.declinedPermissions.includes('email')
+        ) {
+          Alert.alert('Email is required')
+        }
+        if (res.isCancelled) {
+          console.error('err')
+        } else {
+          const req = new GraphRequest(
+            '/me?fields=email,name,picture',
+            null,
+            (err, result) => {
+              if (err) {
+                console.error('err', err)
+                return
+              } else {
+                console.log('res of login fb', result)
+                if (Platform.OS === 'ios') {
+                  AuthenticationToken.getAuthenticationTokenIOS().then(data => {
+                    console.log(data?.authenticationToken)
+                  })
+                } else {
+                  AccessToken.getCurrentAccessToken().then(data => {
+                    console.log(data?.accessToken.toString())
+                  })
+                }
+                // AccessToken.getCurrentAccessToken().then(data => {
+                //   console.log(data.accessToken.toString())
+                // })
+              }
+            }
+          )
+          new GraphRequestManager().addRequest(req).start()
+        }
+      },
+      err => {
+        console.error('error in login', err)
+      }
+    )
+  }
 
   useEffect(() => {
     GoogleSignin.configure({
@@ -143,10 +147,7 @@ const SocialSignIn = ({ title, callBackHandler = () => {} }) => {
             <CustomText style={{ marginLeft: 8 }}>via Apple</CustomText>
           </TouchableOpacity>
         )}
-        <TouchableOpacity
-          style={scheme.button}
-          //  onPress={handleFBLogin}
-        >
+        <TouchableOpacity style={scheme.button} onPress={handleFBLogin}>
           <Icon size={24} name="facebook" family="custom" />
           <CustomText style={{ marginLeft: 8 }}>via Facebook</CustomText>
         </TouchableOpacity>

@@ -28,7 +28,7 @@ const SignUp = ({ setter }) => {
   const [userType, setUserType] = useState(1)
   const [loading, setLoading] = useState(false)
   const [checked, setChecked] = React.useState(true)
-  const [rememberMe, setRememberMe] = useState(false)
+  const [rememberMe, setRememberMe] = useState(true)
 
   const toggleCheckbox = () => setChecked(prev => !prev)
 

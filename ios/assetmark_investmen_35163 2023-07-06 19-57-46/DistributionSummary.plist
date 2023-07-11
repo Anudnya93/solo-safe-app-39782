@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>assetmark_investmen_35163.ipa</key>
+	<array>
+		<dict>
+			<key>architectures</key>
+			<array>
+				<string>arm64</string>
+			</array>
+			<key>buildNumber</key>
+			<string>25</string>
+			<key>certificate</key>
+			<dict>
+				<key>SHA1</key>
+				<string>41308EF1E0092D59B49D1284B5B1E50A208DCB46</string>
+				<key>dateExpires</key>
+				<string>02/03/24</string>
+				<key>type</key>
+				<string>Cloud Managed Apple Distribution</string>
+			</dict>
+			<key>entitlements</key>
+			<dict>
+				<key>application-identifier</key>
+				<string>AAG572T86P.com.assetmark.investments</string>
+				<key>beta-reports-active</key>
+				<true/>
+				<key>com.apple.developer.team-identifier</key>
+				<string>AAG572T86P</string>
+				<key>get-task-allow</key>
+				<false/>
+			</dict>
+			<key>name</key>
+			<string>assetmark_investmen_35163.app</string>
+			<key>profile</key>
+			<dict>
+				<key>UUID</key>
+				<string>54d46574-eda3-4be1-ab32-9ae6a6117cb1</string>
+				<key>dateExpires</key>
+				<string>02/03/24</string>
+				<key>name</key>
+				<string>iOS Team Store Provisioning Profile: com.assetmark.investments</string>
+			</dict>
+			<key>symbols</key>
+			<true/>
+			<key>team</key>
+			<dict>
+				<key>id</key>
+				<string>AAG572T86P</string>
+				<key>name</key>
+				<string>ASSETMARK, INC.</string>
+			</dict>
+			<key>versionNumber</key>
+			<string>1.1</string>
+		</dict>
+	</array>
+</dict>
+</plist>

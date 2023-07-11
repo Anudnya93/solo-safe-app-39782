@@ -43,6 +43,7 @@
 		906968972A2DE87C0091ABF0 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 906968872A2DE87C0091ABF0 /* MaterialIcons.ttf */; };
 		907866522A5455C600F796B6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 907866512A5455C600F796B6 /* GoogleService-Info.plist */; };
 		909155BEFF4D4D0988A2649D /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 5967E4E5A536419F9ED6F12C /* OpenSans-ExtraBold.ttf */; };
+		90C5823B2A568692002D6C30 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C5823A2A568692002D6C30 /* File.swift */; };
 		A6C7425242C04D36AF054B71 /* MaterialIcons.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83FA601EF9E349F28FFF848C /* MaterialIcons.ttf */; };
 		A85E604776D443BB8B655BF9 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 217FC7A1FB76480D8DF1BE95 /* OpenSans-Light.ttf */; };
 		C45094E7198E4387AED91046 /* Entypo.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 2BF0DB88C5C84B9D857705FF /* Entypo.ttf */; };
@@ -114,6 +115,8 @@
 		906968862A2DE87C0091ABF0 /* SimpleLineIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = SimpleLineIcons.ttf; sourceTree = "<group>"; };
 		906968872A2DE87C0091ABF0 /* MaterialIcons.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = MaterialIcons.ttf; sourceTree = "<group>"; };
 		907866512A5455C600F796B6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		90C582392A568692002D6C30 /* black_tooth_39782-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "black_tooth_39782-Bridging-Header.h"; sourceTree = "<group>"; };
+		90C5823A2A568692002D6C30 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
 		97BDF6B1C81C42F0B8D4F743 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = "OpenSans-Bold.ttf"; path = "../src/assets/fonts/OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		9DA8D9CAC54644E7859B36E6 /* EvilIcons.ttf */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 9; includeInIndex = 0; lastKnownFileType = unknown; name = EvilIcons.ttf; path = "../node_modules/react-native-vector-icons/Fonts/EvilIcons.ttf"; sourceTree = "<group>"; };
 		A6082B6C0918F1BFAD92BCFD /* libPods-black_tooth_39782.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-black_tooth_39782.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -243,6 +246,7 @@
 		83CBB9F61A601CBA00E9B192 = {
 			isa = PBXGroup;
 			children = (
+				90C5823A2A568692002D6C30 /* File.swift */,
 				13B07FAE1A68108700A75B9A /* black_tooth_39782 */,
 				832341AE1AAA6A7D00B99B32 /* Libraries */,
 				00E356EF1AD99517003FC87E /* black_tooth_39782Tests */,
@@ -250,6 +254,7 @@
 				2D16E6871FA4F8E400B85C8A /* Frameworks */,
 				159CD868CB33F506D6ED7B2F /* Pods */,
 				0F092D14CD624546BE8BD8AF /* Resources */,
+				90C582392A568692002D6C30 /* black_tooth_39782-Bridging-Header.h */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -301,6 +306,7 @@
 				00E356EB1AD99517003FC87E /* Frameworks */,
 				00E356EC1AD99517003FC87E /* Resources */,
 				ADB64E91D420F73EFACC97CA /* [CP] Copy Pods Resources */,
+				1390B93923BC29D32C3A4B84 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -324,6 +330,7 @@
 				00DD1BFF1BD5951E006B06BC /* Bundle React Native code and images */,
 				C285E9C5DDA25A2369D4A263 /* [CP] Copy Pods Resources */,
 				6F45F5A46295A733B9256F41 /* [CP-User] [RNFB] Core Configuration */,
+				E550F5E3DA50DFEA1CFE4824 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -347,7 +354,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -443,6 +450,23 @@
 			shellPath = /bin/sh;
 			shellScript = "set -e\n\nexport NODE_BINARY=node\n../node_modules/react-native/scripts/react-native-xcode.sh\n";
 		};
+		1390B93923BC29D32C3A4B84 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-black_tooth_39782-black_tooth_39782Tests/Pods-black_tooth_39782-black_tooth_39782Tests-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-black_tooth_39782-black_tooth_39782Tests/Pods-black_tooth_39782-black_tooth_39782Tests-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-black_tooth_39782-black_tooth_39782Tests/Pods-black_tooth_39782-black_tooth_39782Tests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		170679AAAB23E6EF501BFB6F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -534,6 +558,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-black_tooth_39782/Pods-black_tooth_39782-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		E550F5E3DA50DFEA1CFE4824 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-black_tooth_39782/Pods-black_tooth_39782-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-black_tooth_39782/Pods-black_tooth_39782-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-black_tooth_39782/Pods-black_tooth_39782-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		FD10A7F022414F080027D42C /* Start Packager */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -569,6 +610,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.m in Sources */,
+				90C5823B2A568692002D6C30 /* File.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 				901769512A2DF4DF003631CA /* RNLockDetection.m in Sources */,
 			);
@@ -589,6 +631,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = E8173809FD7ABB1307096AB3 /* Pods-black_tooth_39782-black_tooth_39782Tests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -616,6 +659,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DCE28AD23B4F7BA1F4E87602 /* Pods-black_tooth_39782-black_tooth_39782Tests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = black_tooth_39782Tests/Info.plist;
@@ -660,6 +704,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = black_tooth_39782;
+				SWIFT_OBJC_BRIDGING_HEADER = "black_tooth_39782-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -689,6 +734,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = black_tooth_39782;
+				SWIFT_OBJC_BRIDGING_HEADER = "black_tooth_39782-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
